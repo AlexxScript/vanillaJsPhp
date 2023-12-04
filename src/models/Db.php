@@ -6,7 +6,7 @@ class Db{
     public $conection;
     function __construct(){
         try {
-            $this->conection = new PDO('mysql:host=localhost;dbname=mydatabase', USERDB, PASSWORD);
+            $this->conection = new PDO('mysql:host=db;port=3306;dbname=mydatabase', 'user', 'password');
         } catch (PDOException $e) {
             print "¡Error!: " . $e->getMessage() . "<br/>";
             exit();

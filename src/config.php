@@ -1,3 +1,3 @@
 <?php
 define('USERDB','user');
-define('PASSWORD','password');
+define('PASSWORD','example');

@@ -17,7 +17,14 @@ services:
     image: php:8-fpm
     volumes:
       - ./src:/var/www/html
-
+    command: >
+      bash -c "
+        docker-php-ext-install pdo_mysql mysqli pdo_pgsql
+        docker-php-ext-enable pdo_mysql mysqli pdo_pgsql
+        php-fpm
+      "
+    depends_on:
+      - db
   db:
     image: mysql:latest
     ports:
