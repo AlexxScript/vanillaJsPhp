@@ -12,8 +12,6 @@ class User {
             $db = $con->conection;
             $dboperation = $db->prepare("INSERT INTO user (user_email,user_name,password) VALUES (?,?,?)");
             $dboperation->execute([$email,$name,$password]);
-            $objeto = $dboperation->fetch();
-            var_dump($objeto);
         } catch (PDOException $e) {
             print $e->getMessage();
         }
@@ -37,7 +35,7 @@ class User {
         try {
             $con = new Db();
             $db = $con->conection;
-            $dboperation = $db->prepare("SELECT * FROM user WHERE user_email = ?");
+            $dboperation = $db->prepare("SELECT user_name,password FROM user WHERE user_email = ?");
             $dboperation->execute([$userEmail]);
             return $dboperation->fetch();
         } catch (PDOException $e) {

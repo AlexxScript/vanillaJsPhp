@@ -2,13 +2,7 @@
 require(__DIR__ . "/models/Db.php");
 require(__DIR__ . "/models/User.php");
 require(__DIR__ . "/controllers/UserController.php");
-
-
-//Testing controllers and models
-$contro = new UserController();
-
-var_dump($contro->createUser("user8@user8","user8","ss","ss"));
-
+require(__DIR__ . "/views/home.php");
 
 // $a = new User();
 // $user = $a->createUser("user2@user2","user2","pass");
