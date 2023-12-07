@@ -10,20 +10,25 @@ class User {
         try {
             $con = new Db();
             $db = $con->conection;
-            $dboperation = $db->prepare("INSERT INTO user (user_email,user_name,password) VALUES (?,?,?)");
-            $dboperation->execute([$email,$name,$password]);
+            $dboperation = $db->prepare("INSERT INTO user (user_email,user_name,password) VALUES (:email,:name,:password)");
+            $dboperation->bindParam(":email",$email);
+            $dboperation->bindParam(":name",$name);
+            $dboperation->bindParam(":password",$password);
+            $dboperation->execute();
         } catch (PDOException $e) {
             print $e->getMessage();
         }
         
     }
 
-    function getUser($userEmail,$userName) {
+    function getUser($email,$name) {
         try {
             $con = new Db();
             $db = $con->conection;
-            $dboperation = $db->prepare("SELECT * FROM user WHERE user_email = ? AND user_name = ?");
-            $dboperation->execute([$userEmail,$userName]);
+            $dboperation = $db->prepare("SELECT * FROM user WHERE user_email = :email AND user_name = :name");
+            $dboperation->bindParam(":email",$email);
+            $dboperation->bindParam(":name",$name);
+            $dboperation->execute();
             $data = $dboperation->fetch();
             return $data;
         } catch (PDOException $e) {
@@ -31,12 +36,13 @@ class User {
         }
     }
 
-    function getUserByEmail($userEmail) {
+    function getUserByEmail($email) {
         try {
             $con = new Db();
             $db = $con->conection;
-            $dboperation = $db->prepare("SELECT id_user,user_name,password FROM user WHERE user_email = ?");
-            $dboperation->execute([$userEmail]);
+            $dboperation = $db->prepare("SELECT id_user,user_name,password FROM user WHERE user_email = :email");
+            $dboperation->bindParam(":email",$email);
+            $dboperation->execute();
             return $dboperation->fetch();
         } catch (PDOException $e) {
             print $e->getMessage();
@@ -47,10 +53,10 @@ class User {
         try {
             $con = new Db();
             $db = $con->conection;
-            $dboperation = $db->prepare("DELETE FROM user WHERE id_user = ?");
-            $dboperation->execute([$id]);
+            $dboperation = $db->prepare("DELETE FROM user WHERE id_user = :id");
+            $dboperation->bindParam(":id",$id);
+            $dboperation->execute();
             $objeto = $dboperation->fetch();
-            var_dump($objeto);
         } catch (PDOException $e) {
             print $e->getMessage();
         }

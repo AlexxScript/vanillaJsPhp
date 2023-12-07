@@ -4,14 +4,15 @@ require_once __DIR__ . "/Db.php";
 
 class Task {
 
-    function createTask($idTask,$idUser,$description){
+    function createTask($idUser,$description){
         try {
             $con = new Db();
             $db = $con->conection;
-            $a = $db->prepare("INSERT INTO task (description) values (?) WHERE id_task = ? AND id_user = ?");
-            $a->execute([$description,$idTask,$idUser]);
-            $task = $a->fetchAll(PDO::FETCH_ASSOC);
-            return $task;
+            $dbOperation = $db->prepare("INSERT INTO task(id_user,task_description) VALUES(:idUser,:description)");
+            $dbOperation->bindParam(":idUser",$idUser);
+            $dbOperation->bindParam(":description",$description);
+            $a= $dbOperation->execute();
+            return $a;
         } catch (PDOException $e) {
             print $e->getMessage();
         }
@@ -21,9 +22,11 @@ class Task {
         try {
             $con = new Db();
             $db = $con->conection;
-            $a = $db->prepare("SELECT * FROM task WHERE id_task = ? AND id_user = ?");
-            $a->execute([$idTask,$idUser]);
-            $task = $a->fetchAll(PDO::FETCH_ASSOC);
+            $dbOperation = $db->prepare("SELECT * FROM task WHERE id_task = :idTask AND id_user = :idUser");
+            $dbOperation->bindParam(":idTask",$idTask);
+            $dbOperation->bindParam(":idUser",$idUser);
+            $dbOperation->execute();
+            $task = $dbOperation->fetchAll(PDO::FETCH_ASSOC);
             return $task;
         } catch (PDOException $e) {
             print $e->getMessage();
@@ -34,9 +37,10 @@ class Task {
         try {
             $con = new Db();
             $db = $con->conection;
-            $a = $db->prepare("SELECT * FROM task WHERE id_user = ?");
-            $a->execute([$idUser]);
-            $task = $a->fetchAll(PDO::FETCH_ASSOC);
+            $dbOperation = $db->prepare("SELECT * FROM task WHERE id_user = :idUser");
+            $dbOperation->bindParam(":idUser",$idUser);
+            $dbOperation->execute();
+            $task = $dbOperation->fetchAll(PDO::FETCH_ASSOC);
             return $task;
         } catch (PDOException $e) {
             print $e->getMessage();
@@ -47,9 +51,9 @@ class Task {
         try {
             $con = new Db();
             $db = $con->conection;
-            $a = $db->prepare("DELETE FROM task WHERE id_task = ? AND id_user = ?");
-            $a->execute([$idTask,$idUser]);
-            $task = $a->fetchAll(PDO::FETCH_ASSOC);
+            $dbOperation = $db->prepare("DELETE FROM task WHERE id_task = ? AND id_user = ?");
+            $dbOperation->execute([$idTask,$idUser]);
+            $task = $dbOperation->fetchAll(PDO::FETCH_ASSOC);
             return $task;
         } catch (PDOException $e) {
             print $e->getMessage();
@@ -60,9 +64,12 @@ class Task {
         try {
             $con = new Db();
             $db = $con->conection;
-            $a = $db->prepare("UPDATE task SET description = ? WHERE id_task = ? AND id_user = ?");
-            $a->execute([$description,$idTask,$idUser]);
-            $task = $a->fetchAll(PDO::FETCH_ASSOC);
+            $dbOperation = $db->prepare("UPDATE task SET description = :description WHERE id_task = :idTask AND id_user = :idUser");
+            $dbOperation->bindParam(":description",$description);
+            $dbOperation->bindParam(":idTask",$idTask);
+            $dbOperation->bindParam(":idUser",$idUser);
+            $dbOperation->execute();
+            $task = $dbOperation->fetchAll(PDO::FETCH_ASSOC);
             return $task;
         } catch (PDOException $e) {
             print $e->getMessage();

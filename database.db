@@ -9,6 +9,6 @@ CREATE TABLE user (
 CREATE TABLE task (
     id_task INT AUTO_INCREMENT PRIMARY KEY,
     id_user INT,
-    task_description VARCHAR(200),
+    task_description TEXT,
     FOREIGN KEY (id_user) REFERENCES user(id_user)
 );
