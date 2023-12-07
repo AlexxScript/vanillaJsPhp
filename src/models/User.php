@@ -35,7 +35,7 @@ class User {
         try {
             $con = new Db();
             $db = $con->conection;
-            $dboperation = $db->prepare("SELECT user_name,password FROM user WHERE user_email = ?");
+            $dboperation = $db->prepare("SELECT id_user,user_name,password FROM user WHERE user_email = ?");
             $dboperation->execute([$userEmail]);
             return $dboperation->fetch();
         } catch (PDOException $e) {

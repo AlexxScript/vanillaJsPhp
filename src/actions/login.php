@@ -10,8 +10,10 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
         if ($resController !== "Logged in") {
             header("Location:/login?error=$resController");
+            exit();
         } else {
             header("Location:/");
+            exit();
         }
 
     }

@@ -15,8 +15,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($useRes !== "Created succesfully") {
             header("Location:/register?error=$useRes");
+            exit();
         } else {
             header("Location:/login");
+            exit();
         }
     }
 }

@@ -1,9 +1,16 @@
+<?php
+session_start();
+if (isset($_SESSION["id_user"])) {
+    header("Location:/home");
+}
+?>
+
 <?php require_once __DIR__ . "/../components/nav.php" ?>
-<?php 
-    $error = $_GET["error"] ?? null;
-    if ($error !== null) {
-        echo $error;
-    }
+<?php
+$error = $_GET["error"] ?? null;
+if ($error !== null) {
+    echo $error;
+}
 ?>
 <form action="../actions/register.php" method="post">
     <div class="inputClass">

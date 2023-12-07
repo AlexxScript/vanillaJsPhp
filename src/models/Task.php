@@ -10,8 +10,8 @@ class Task {
             $db = $con->conection;
             $a = $db->prepare("INSERT INTO task (description) values (?) WHERE id_task = ? AND id_user = ?");
             $a->execute([$description,$idTask,$idUser]);
-            $objeto = $a->fetch();
-            var_dump($objeto);
+            $task = $a->fetchAll(PDO::FETCH_ASSOC);
+            return $task;
         } catch (PDOException $e) {
             print $e->getMessage();
         }
@@ -23,21 +23,21 @@ class Task {
             $db = $con->conection;
             $a = $db->prepare("SELECT * FROM task WHERE id_task = ? AND id_user = ?");
             $a->execute([$idTask,$idUser]);
-            $objeto = $a->fetch();
-            var_dump($objeto);
+            $task = $a->fetchAll(PDO::FETCH_ASSOC);
+            return $task;
         } catch (PDOException $e) {
             print $e->getMessage();
         }
     }
 
-    function getTasks($idUser){
+    public function getTasks($idUser){
         try {
             $con = new Db();
             $db = $con->conection;
-            $a = $db->prepare("SELECT * FROM task WHERE id_task = ? AND id_user = ?");
+            $a = $db->prepare("SELECT * FROM task WHERE id_user = ?");
             $a->execute([$idUser]);
-            $objeto = $a->fetch();
-            var_dump($objeto);
+            $task = $a->fetchAll(PDO::FETCH_ASSOC);
+            return $task;
         } catch (PDOException $e) {
             print $e->getMessage();
         }
@@ -49,8 +49,8 @@ class Task {
             $db = $con->conection;
             $a = $db->prepare("DELETE FROM task WHERE id_task = ? AND id_user = ?");
             $a->execute([$idTask,$idUser]);
-            $objeto = $a->fetch();
-            var_dump($objeto);
+            $task = $a->fetchAll(PDO::FETCH_ASSOC);
+            return $task;
         } catch (PDOException $e) {
             print $e->getMessage();
         }
@@ -62,8 +62,8 @@ class Task {
             $db = $con->conection;
             $a = $db->prepare("UPDATE task SET description = ? WHERE id_task = ? AND id_user = ?");
             $a->execute([$description,$idTask,$idUser]);
-            $objeto = $a->fetch();
-            var_dump($objeto);
+            $task = $a->fetchAll(PDO::FETCH_ASSOC);
+            return $task;
         } catch (PDOException $e) {
             print $e->getMessage();
         }

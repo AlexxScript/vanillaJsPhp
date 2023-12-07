@@ -41,9 +41,15 @@ class UserController{
         if (!$passVerify) {
             return "Wrong password";
         }
-        $_SESSION["user_id"] = $user["user_name"];
+        $_SESSION["id_user"] = $user["id_user"];
+        $_SESSION["user_name"] = $user["user_name"];
         return "Logged in";
+    }
 
+    function logOut () {
+        session_start();
+        session_destroy();
+        header("Location:/login");
     }
 
 }
