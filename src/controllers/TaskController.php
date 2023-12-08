@@ -23,4 +23,9 @@ class TaskController
         }
         return $this->taskModel->createTask($id_user, $description);
     }
+
+    public function deleteTask ($idTask,$idUser) {
+        $this->tasks = $this->taskModel->deleteTask($idTask,$idUser);
+        return $this->tasks;
+    }
 }
