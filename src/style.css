@@ -7,22 +7,30 @@
 body {
     color: #ccc;
     background-color: #1c1c1c;
+    font-family: Geist;
 }
 
 nav {
+    width: 100%;
     position: fixed;
     top: 0;
-    width: 100%;
+}
+
+.mainContainer { 
+    margin-top: 100px;
+}
+
+ul {
+    width: 80%;
+    margin: 10px auto;
+    display: flex;
+    gap: 10px;
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(7.5px);
     -webkit-backdrop-filter: blur(7.5px);
     border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
     padding: 20px;
-}
-
-ul {
-    display: flex;
-    gap: 10px;
 }
 
 li {
@@ -41,9 +49,19 @@ a {
 }
 
 .inputClass textarea{
+    color: #fff;
+    background: transparent;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(7.5px);
+    -webkit-backdrop-filter: blur(7.5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 10px 0px 0px 10px;
     padding: 10px;
     width: 80%;
+}
+
+.inputClass textarea::placeholder{
+    color: #aaa;
 }
 
 .inputClass input{
