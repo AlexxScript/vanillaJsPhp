@@ -17,9 +17,9 @@ $tas = $taskController->tasks;
 <?php foreach ($tas as $task) { ?>
     <div class="containerTask">
         <h2><?php echo $task["task_description"] ?></h2>
-        <div>
-            <a href="/">Edit</a>
-            <a href="/delete?idTask=<?php echo $task["id_task"]; ?>">Delete</a>
+        <div class="buttons">
+            <a class="editButton" href="/">Edit</a>
+            <a class="deleteButton" href="/delete?idTask=<?php echo $task["id_task"]; ?>">Delete</a>
         </div>
     </div>
 <?php } ?>
