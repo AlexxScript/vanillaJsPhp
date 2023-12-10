@@ -1,3 +1,14 @@
+:root {
+    --font: Geist;
+    --bg-color: #1c1c1c;
+    --bg-container: #2c2c2c;
+    --global-font-color: #ccc;
+    --border-input: solid 2px #49a09d;
+    --create-input: #5ec451;
+    --edit-button: #fad37b;
+    --delete-button: #F05365;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -5,9 +16,9 @@
 }
 
 body {
-    color: #ccc;
-    background-color: #1c1c1c;
-    font-family: Geist;
+    color: var(--global-font-color);
+    background-color: var(--bg-color);
+    font-family: var(--font);
 }
 
 nav {
@@ -16,7 +27,7 @@ nav {
     top: 0;
 }
 
-.mainContainer { 
+.mainContainer {
     margin-top: 100px;
 }
 
@@ -25,12 +36,11 @@ ul {
     margin: 10px auto;
     display: flex;
     gap: 10px;
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(7.5px);
-    -webkit-backdrop-filter: blur(7.5px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 10px;
     padding: 20px;
+    background: linear-gradient(var(--bg-container), var(--bg-container)) padding-box,
+        linear-gradient(to right, rgb(53, 0, 139), darkorchid) border-box;
+    border-radius: 50px;
+    border: 2px solid transparent;
 }
 
 li {
@@ -40,32 +50,43 @@ li {
 a {
     text-decoration: none;
     padding: 10px;
-    background-color: #F05365;
-    color: #2b2b2b;
+    color: var(--global-font-color);
 }
 
 .inputClass {
     display: flex;
 }
 
-.inputClass textarea{
+.inputClass textarea {
+    outline: none;
+    resize: none;
     color: #fff;
-    background: transparent;
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(7.5px);
-    -webkit-backdrop-filter: blur(7.5px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 10px 0px 0px 10px;
+    background: linear-gradient(var(--bg-container), var(--bg-container)) padding-box,
+        linear-gradient(to right, #5f2c82, #49a09d) border-box;
+    border: 2px solid transparent;
     padding: 10px;
+    border-radius: 10px 0px 0px 10px;
+    transition: all 0.75s;
     width: 80%;
 }
 
-.inputClass textarea::placeholder{
+.inputClass textarea::placeholder {
     color: #aaa;
 }
 
+.inputClass textarea:focus {
+    border: var(--border-input);
+}
+
 .inputClass input{
-    background-color: #5ec451;
+    background-color: var(--create-input);
+    border-radius: 0px 10px 10px 0px;
+    border-style: none;
+    width: 20%;
+}
+
+.inputClass input[type="submit"] {
+    background-color: var(--create-input);
     border-radius: 0px 10px 10px 0px;
     border-style: none;
     cursor: pointer;
@@ -86,12 +107,19 @@ a {
     max-width: 80%;
     width: 100%;
     height: auto;
-    padding: 10px 0px;
+    padding: 5px 0px;
     margin: 15px auto;
     display: flex;
     align-items: center;
-    background-color: #2c2c2c;
+    background: linear-gradient(var(--bg-container), var(--bg-container)) padding-box,
+        linear-gradient(to right, #5f2c82, #49a09d) border-box;
+    border: 2px solid transparent;
     border-radius: 15px;
+    transition: all 0.75s;
+}
+
+.containerTask:hover {
+    border: var(--border-input);
 }
 
 .containerTask h2 {
@@ -109,17 +137,122 @@ a {
 }
 
 .editButton {
+    color: var(--bg-container);
     text-align: center;
     padding: 20px 0px;
     width: 50%;
     border-radius: 10px;
-    background-color: #fad37b;
+    background-color: var(--edit-button);
 }
 
 .deleteButton {
+    color: var(--bg-container);
     text-align: center;
     padding: 20px 0px;
     width: 50%;
     border-radius: 10px;
-    background-color: #F05365;
+    background-color: var(--delete-button);
+}
+
+.formInit {
+    width: 40%;
+    padding: 25px;
+    margin: 0px auto;
+    background: linear-gradient(var(--bg-container),var(--bg-container)) padding-box,
+        linear-gradient(to right, #5f2c82, #49a09d) border-box;
+    background-color: var(--bg-container);
+    border: 2px solid transparent;
+    border-radius: 10px;
+}
+
+.formInit div {
+    display: flex;
+    flex-direction: column;
+}
+
+.formInit div input{
+    background: linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
+        linear-gradient(to right, rgb(53, 0, 139), darkorchid) border-box;
+    margin: 10px 0px;
+    outline: none;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    width: 100%;
+    /* background-color: var(--bg-color); */
+    padding: 15px;
+    color: var(--global-font-color);
+    transition: all 1s;
+}
+
+.formInit div input:focus{
+    border: 2px solid #49a09d;
+}
+
+.formInit div input[type="submit"]{
+    background: linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
+        linear-gradient(to right, rgb(53, 0, 139), darkorchid) border-box;
+    margin: 10px 0px;
+    outline: none;
+    border: none;
+    color: var(--global-font-color);
+    border-radius: 10px;
+    width: 100%;
+    cursor: pointer;
+    padding: 15px;
+    border: solid 2px transparent;
+    transition: all 0.5s;
+}
+
+.formInit div input[type="submit"]:hover{
+    border: var(--border-input);
+}
+
+
+.formEdit {
+    width: 40%;
+    padding: 25px;
+    margin: 0px auto;
+    background: linear-gradient(var(--bg-container),var(--bg-container)) padding-box,
+        linear-gradient(to right, #5f2c82, #49a09d) border-box;
+    background-color: var(--bg-container);
+    border: 2px solid transparent;
+    border-radius: 10px;
+}
+
+.formEdit div {
+    display: flex;
+    flex-direction: column;
+}
+
+.formEdit div textarea{
+    background: linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
+        linear-gradient(to right, rgb(53, 0, 139), darkorchid) border-box;
+    margin: 10px 0px;
+    outline: none;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    width: 100%;
+    /* background-color: var(--bg-color); */
+    padding: 15px;
+    color: var(--global-font-color);
+    transition: all 1s;
+}
+
+.formEdit div input[type="submit"]{
+    background: linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
+        linear-gradient(to right, rgb(53, 0, 139), darkorchid) border-box;
+    margin: 10px 0px;
+    outline: none;
+    border: none;
+    color: var(--global-font-color);
+    border-radius: 10px;
+    width: 100%;
+    cursor: pointer;
+    padding: 15px;
+    border: solid 2px transparent;
+    transition: all 0.5s;
+}
+
+.formEdit div input[type="submit"]:hover{
+    border: var(--border-input);
 }

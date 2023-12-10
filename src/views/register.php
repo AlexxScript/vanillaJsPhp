@@ -14,7 +14,7 @@ if ($error !== null) {
 ?>
 
 <div class="mainContainer">
-    <form action="../actions/register.php" method="post">
+    <form class="formInit" action="../actions/register.php" method="post">
         <div class="inputClass">
             <label for="user_email">Email</label>
             <input type="email" name="user_email" id="" placeholder="email@email" required>

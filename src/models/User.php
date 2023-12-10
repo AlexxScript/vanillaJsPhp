@@ -25,7 +25,7 @@ class User {
         try {
             $con = new Db();
             $db = $con->conection;
-            $dboperation = $db->prepare("SELECT * FROM user WHERE user_email = :email AND user_name = :name");
+            $dboperation = $db->prepare("SELECT * FROM user WHERE user_email = :email OR user_name = :name");
             $dboperation->bindParam(":email",$email);
             $dboperation->bindParam(":name",$name);
             $dboperation->execute();

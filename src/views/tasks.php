@@ -18,7 +18,7 @@ $tas = $taskController->tasks;
     <div class="containerTask">
         <h2><?php echo $task["task_description"] ?></h2>
         <div class="buttons">
-            <a class="editButton" href="/">Edit</a>
+            <a class="editButton" href="/edit">Edit</a>
             <a class="deleteButton" href="/delete?idTask=<?php echo $task["id_task"]; ?>">Delete</a>
         </div>
     </div>
