@@ -64,7 +64,7 @@ class Task {
         try {
             $con = new Db();
             $db = $con->conection;
-            $dbOperation = $db->prepare("UPDATE task SET description = :description WHERE id_task = :idTask AND id_user = :idUser");
+            $dbOperation = $db->prepare("UPDATE task SET task_description = :description WHERE id_task = :idTask AND id_user = :idUser");
             $dbOperation->bindParam(":description",$description);
             $dbOperation->bindParam(":idTask",$idTask);
             $dbOperation->bindParam(":idUser",$idUser);

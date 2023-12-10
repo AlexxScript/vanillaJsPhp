@@ -24,6 +24,13 @@ class TaskController
         return $this->taskModel->createTask($id_user, $description);
     }
 
+    public function editTask($description,$idTask,$idUser){
+        if (!isset($description) or !isset($idTask) or !isset($idUser)) {
+            return "Didn't send a description";
+        }
+        return $this->taskModel->editTask($description,$idTask,$idUser);
+    }
+
     public function deleteTask ($idTask,$idUser) {
         $this->tasks = $this->taskModel->deleteTask($idTask,$idUser);
         return $this->tasks;
