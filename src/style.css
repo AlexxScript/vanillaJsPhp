@@ -31,6 +31,16 @@ nav {
     margin-top: 100px;
 }
 
+.mainContainerHome{
+    margin-top: 100px;
+}
+
+.homeContainer{
+    max-width: 100%;
+    width: 80%;
+    background-color: var(--global-font-color);
+}
+
 ul {
     width: 80%;
     margin: 10px auto;
