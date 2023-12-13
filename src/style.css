@@ -32,59 +32,62 @@ nav {
     margin-top: 100px;
 }
 
-.mainContainerHome{
+.mainContainerHome {
     height: 100vh;
     display: flex;
     margin: 0px auto;
     align-items: center;
     justify-content: center;
+    overflow-x: hidden;
 }
 
 /* -----------------SVG--------------------- */
-.svg3{
+.svg3 {
     position: relative;
     left: 20%;
     width: 2%;
 }
 
-.svg4{
+.svg4 {
     position: relative;
     right: 10%;
     width: 3%;
 }
-.svg5{
+
+.svg5 {
     position: relative;
     top: 30%;
     width: 3%;
 }
 
-.svg6{
+.svg6 {
     position: relative;
     left: 10%;
     bottom: 30%;
     width: 3%;
 }
 
-.svg7{
+.svg7 {
     position: relative;
     right: 10%;
     top: 30%;
     width: 3%;
 }
 
-.svg8{
+.svg8 {
     position: relative;
     left: 10%;
     bottom: 25%;
-    width:4%;
+    width: 4%;
 }
 
-.svg9{
+.svg9 {
     position: relative;
     right: 20%;
     top: 25%;
-    width:4%;
+    width: 4%;
 }
+
 /* -----------------SVG--------------------- */
 
 ul {
@@ -97,6 +100,10 @@ ul {
         linear-gradient(to right, rgb(53, 0, 139), darkorchid) border-box;
     border-radius: 50px;
     border: 2px solid transparent;
+}
+
+.buttonNav {
+    display: none;
 }
 
 li {
@@ -134,7 +141,7 @@ a {
     border: var(--border-input);
 }
 
-.inputClass input{
+.inputClass input {
     background-color: var(--create-input);
     border-radius: 0px 10px 10px 0px;
     border-style: none;
@@ -214,7 +221,7 @@ a {
     width: 40%;
     padding: 25px;
     margin: 0px auto;
-    background: linear-gradient(var(--bg-container),var(--bg-container)) padding-box,
+    background: linear-gradient(var(--bg-container), var(--bg-container)) padding-box,
         linear-gradient(to right, #5f2c82, #49a09d) border-box;
     background-color: var(--bg-container);
     border: 2px solid transparent;
@@ -226,7 +233,7 @@ a {
     flex-direction: column;
 }
 
-.formInit div input{
+.formInit div input {
     background: linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
         linear-gradient(to right, rgb(53, 0, 139), darkorchid) border-box;
     margin: 10px 0px;
@@ -240,11 +247,11 @@ a {
     transition: all 1s;
 }
 
-.formInit div input:focus{
+.formInit div input:focus {
     border: 2px solid #49a09d;
 }
 
-.formInit div input[type="submit"]{
+.formInit div input[type="submit"] {
     background: linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
         linear-gradient(to right, rgb(53, 0, 139), darkorchid) border-box;
     margin: 10px 0px;
@@ -259,7 +266,7 @@ a {
     transition: all 0.5s;
 }
 
-.formInit div input[type="submit"]:hover{
+.formInit div input[type="submit"]:hover {
     border: var(--border-input);
 }
 
@@ -268,7 +275,7 @@ a {
     width: 40%;
     padding: 25px;
     margin: 0px auto;
-    background: linear-gradient(var(--bg-container),var(--bg-container)) padding-box,
+    background: linear-gradient(var(--bg-container), var(--bg-container)) padding-box,
         linear-gradient(to right, #5f2c82, #49a09d) border-box;
     background-color: var(--bg-container);
     border: 2px solid transparent;
@@ -280,7 +287,7 @@ a {
     flex-direction: column;
 }
 
-.formEdit div textarea{
+.formEdit div textarea {
     background: linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
         linear-gradient(to right, rgb(53, 0, 139), darkorchid) border-box;
     margin: 10px 0px;
@@ -294,7 +301,7 @@ a {
     transition: all 1s;
 }
 
-.formEdit div input[type="submit"]{
+.formEdit div input[type="submit"] {
     background: linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
         linear-gradient(to right, rgb(53, 0, 139), darkorchid) border-box;
     margin: 10px 0px;
@@ -309,6 +316,88 @@ a {
     transition: all 0.5s;
 }
 
-.formEdit div input[type="submit"]:hover{
+.formEdit div input[type="submit"]:hover {
     border: var(--border-input);
+}
+
+@media (max-width: 768px) {
+
+    nav {
+        background: linear-gradient(var(--bg-container), var(--bg-container)) padding-box,
+            linear-gradient(to right, rgb(53, 0, 139), darkorchid) border-box;
+        border-right: 2px solid transparent;
+        border-bottom: 2px solid transparent;
+        width: 60%;
+    }
+
+    ul {
+        z-index: 1000;
+        width: 100%;
+        margin: 0px auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+        border-radius: 0px;
+        border: none;
+        margin-top: -101%;
+        transition: all 1s;
+    }
+
+    .ulActive {
+        z-index: 1000;
+        width: 100%;
+        margin: 0px auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+        border-radius: 0px;
+        border: none;
+        height: 100vh;
+    }
+
+    .buttonNav {
+        width: 50px;
+        display: flex;
+        border-style: none;
+        text-align: center;
+        justify-content: center;
+        align-content: center;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 100%;
+        color: var(--global-font-color);
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    .containerTask {
+        max-width: 80%;
+        width: 100%;
+        height: auto;
+        padding: 5px 0px;
+        margin: 15px auto;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .containerTask h2 {
+        width: 100%;
+    }
+    
+    .containerTask div {
+        display: flex;
+        justify-content: center;
+        margin: 10px;
+        width: 100%;
+    }
+    
+    .inputClass textarea {
+        width: 70%;
+    }   
+    .inputClass input[type="submit"] {
+        width: 30%;
+    } 
+
 }
